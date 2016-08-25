@@ -1,0 +1,88 @@
+@import 'mixins.scss';
+
+html {
+  font-size: 10px;
+}
+
+header {
+
+  h1, .content {
+    text-align: center;
+  }
+}
+
+main {
+  margin: 50px auto;
+  max-width: 970px;
+
+  form {
+    margin: 0 auto;
+    max-width: 300px;
+    width: 100%;
+
+    button {
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
+.results-container {
+  margin: 100px auto;
+
+  h2 {
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    margin: 20px auto;
+    max-width: 600px;
+
+    li {
+      font-size: 2rem;
+    }
+  }
+}
+
+.results-container li {
+  vertical-align: middle;
+
+  .btn-default {
+    border: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: none;
+      box-shadow: none;
+      outline: none;
+    }
+  }
+
+  .btn-default.active {
+    background-color: white;
+    box-shadow: none;
+  }
+
+  span {
+    vertical-align: middle;
+  }
+
+  .favorite {
+    font-size: 2.5rem;
+    line-height: 12px;
+
+    .glyphicon {
+      color: #D4D4D4;
+
+      &:hover {
+        color: #f1c40f;
+      }
+    }
+  }
+
+  .favorite.active .glyphicon {
+    color: #f1c40f;
+  }
+}

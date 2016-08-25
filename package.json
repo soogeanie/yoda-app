@@ -1,0 +1,44 @@
+{
+  "name": "yoda-app",
+  "version": "1.0.0",
+  "author": "Sujin Minnich <sujinminnich@gmail.com>",
+  "description": "A Yodaism Single Page App",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --output-style compressed -o dist/css src/sass",
+    "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
+    "lint": "./node_modules/eslint/bin/eslint.js  src/js",
+    "uglify": "mkdir -p dist/js && ./node_modules/uglify-js/bin/uglifyjs src/js/*.js -m -c -o dist/js/app.min.js",
+    "build:css": "npm run scss && npm run autoprefixer",
+    "build:js": "npm run uglify",
+    "clean:css": "rimraf dist/css/*",
+    "clean:js": "rimraf dist/js/*",
+    "build:clean": "npm run clean:css && npm run clean:js",
+    "watch:css": "./node_modules/onchange/cli.js 'src/sass/*.scss' -- npm run build:css",
+    "watch:js": "./node_modules/onchange/cli.js 'src/js/*.js' -- npm run build:js",
+    "prebuild": "npm run build:clean",
+    "build": "npm run build:css && npm run build:js && gulp copy",
+    "http-server": "node ./node_modules/http-server/bin/http-server ./dist",
+    "start": "npm run http-server && firebase serve",
+    "dev": "./node_modules/parallelshell/index.js 'npm run start' 'npm run watch:css' 'npm run watch:js'"
+  },
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "handlebars": "4.0.5",
+    "jquery": "3.1.0"
+  },
+  "devDependencies": {
+    "node-sass": "3.8.0",
+    "autoprefixer": "6.4.0",
+    "postcss-cli": "2.5.2",
+    "uglify-js": "2.7.3",
+    "rimraf": "2.5.4",
+    "onchange": "2.5.0",
+    "parallelshell": "2.0.0",
+    "gulp": "3.9.1",
+    "gulp-concat": "2.6.0",
+    "http-server": "0.9.0",
+    "firebase": "3.3.0"
+  }
+}

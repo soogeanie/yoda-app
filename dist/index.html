@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Menu Ideas</title>
+
+    <link href="css/vendor.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1>Yodaisms</h1>
+
+            <div class="content">
+              <p>Type in your own phrase to turn into a Yodaism!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <form id="create-yodaism">
+              <div class="form-group">
+                <input name="plain-speak" id="input-sentence" class="form-control" type="text" placeholder="Type a phrase here">
+              </div>
+
+              <button type="submit" id="submit-yodaism" class="btn btn-success">Create Yodaism</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="results-container row">
+          <div class="col-xs-12">
+            <h2>My Yodaisms</h2>
+
+            <ul id="yodaism-results"></ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script id="results-template" type="text/x-handlebars-template">
+      <li id="#{{id}}">
+        <span>{{sentence}}</span>
+
+        {{#if favorite}}
+        <button data-id="{{id}}" class="btn btn-default favorite active favorite-ism"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>
+        {{else}}
+        <button data-id="{{id}}" class="btn btn-default favorite favorite-ism"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>
+        {{/if}}
+        <button data-id="{{id}}" class="btn btn-danger delete-ism">Delete</button>
+      </li>
+    </script>
+
+    <script src="js/vendor.js"></script>
+    <script src="js/app.min.js"></script>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAI7ps73FfZ_KfEt-iGdcBZ4o64tjl34co",
+        authDomain: "yodaism-71afa.firebaseapp.com",
+        databaseURL: "https://yodaism-71afa.firebaseio.com",
+        storageBucket: "yodaism-71afa.appspot.com",
+      };
+      firebase.initializeApp(config);
+    </script>
+  </body>
+</html>
